@@ -37,7 +37,7 @@ Reference [this web](https://anders.com/blockchain/block.html)
 Fill in the info from website fields to following files.
 ```
 ./input/block.txt
-./input/nonce.txt
+./input/nonce.txt
 ./input/data.txt
 ```
 
@@ -133,13 +133,14 @@ log.txt
 
 https://anders.com/blockchain/blockchain.html
 https://anders.com/blockchain/distributed.html
+
 https://anders.com/blockchain/tokens.html
 https://anders.com/blockchain/coinbase.html
 
 There are many fields to effect the coming hash. You can get a final string using '**getText(block, user)**' functions with devTools.
 
 > block left to right: 1~5
-> user PeerA to PeerC: 1~3
+  user PeerA to PeerC: 1~3
 
 
 ```
