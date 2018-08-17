@@ -8,7 +8,17 @@ function hashIt(str){
 }
 
 
-let string = fs.readFileSync('./data.txt', 'utf8')
+let block = fs.readFileSync('./block.txt', 'utf8')
+let nonce = fs.readFileSync('./nonce.txt', 'utf8')
+let data = fs.readFileSync('./data.txt', 'utf8')
+
+let string = `${block}${nonce}${data}`
+
 let hash = hashIt(string)
 
-console.log(hash);
+console.log(`
+block: ${block}
+nonce: ${nonce}
+data: ${data}
+hash: ${hash}
+            `);
