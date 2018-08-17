@@ -108,7 +108,7 @@ mining...
 ```
 compare the result with the website. ;D
 
-##### logs history
+#### logs history
 Every action of mining, the logs info will be `logs/log.txt`
 
 ```
@@ -140,6 +140,7 @@ https://anders.com/blockchain/coinbase.html
 There are many fields to effect the coming hash. You can get a final string using '**getText(block, user)**' functions with devTools.
 
 > block left to right: 1 - 5
+
 > user PeerA to PeerC: 1 - 3
 
 
