@@ -1,19 +1,52 @@
-const CryptoJS = require("crypto-js");
-
-
-$(function () {
-  mineButtonAnimation(1, 1);
-  updateHash(1, 1);
-});
-
 // *把 Block /  Nonce / Data 欄位輸入的字串都串在一起，成爲一個新的字串
 // block: 第幾個區塊（在這網站，最多顯示5個而已。最左邊是1，最右邊是5）  
 // chain: 那位使用者 （1代表Peer A；2代表 Peer B，以此類推）
+// ======== 所有欄位字串加在一起 ==  getText  ===================================
+// https://anders.com/blockchain/block.html
 function getText(block, chain) {
   return $('#block' + block + 'chain' + chain + 'number').val() +
     $('#block' + block + 'chain' + chain + 'nonce').val() +
     $('#block' + block + 'chain' + chain + 'data').val();
 }
+
+// https://anders.com/blockchain/blockchain.html
+// https://anders.com/blockchain/distributed.html
+function getText(block, chain) {
+  return $('#block' + block + 'chain' + chain + 'number').val() +
+    $('#block' + block + 'chain' + chain + 'nonce').val() +
+    $('#block' + block + 'chain' + chain + 'data').val() +
+    $('#block' + block + 'chain' + chain + 'previous').val();
+}
+
+// https://anders.com/blockchain/tokens.html
+function getText(block, chain) {
+  var s = $('#block' + block + 'chain' + chain + 'number').val() +
+          $('#block' + block + 'chain' + chain + 'nonce').val();
+  for (var x = 0; $('#block' + block + 'chain' + chain + 'tx' + x + 'value').length > 0; x++) {
+    s = s + $('#block' + block + 'chain' + chain + 'tx' + x + 'value').val() +
+            $('#block' + block + 'chain' + chain + 'tx' + x + 'from').val() +
+            $('#block' + block + 'chain' + chain + 'tx' + x + 'to').val();
+  }
+  s = s + $('#block' + block + 'chain' + chain + 'previous').val();
+  return s;
+}
+
+// https://anders.com/blockchain/coinbase.html
+function getText(block, chain) {
+  var s = $('#block' + block + 'chain' + chain + 'number').val() +
+          $('#block' + block + 'chain' + chain + 'nonce').val() +
+          $('#block' + block + 'chain' + chain + 'coinbasevalue').val() +
+          $('#block' + block + 'chain' + chain + 'coinbaseto').val();
+
+  for (var x = 0; $('#block' + block + 'chain' + chain + 'tx' + x + 'value').length > 0; x++) {
+    s = s + $('#block' + block + 'chain' + chain + 'tx' + x + 'value').val() +
+            $('#block' + block + 'chain' + chain + 'tx' + x + 'from').val() +
+            $('#block' + block + 'chain' + chain + 'tx' + x + 'to').val();
+  }
+  s = s + $('#block' + block + 'chain' + chain + 'previous').val();
+  return s;
+}
+// ==================================================================
 
 
 function mineButtonAnimation(block, chain) {
@@ -29,10 +62,7 @@ function mineButtonAnimation(block, chain) {
 }
 
 
-
-
-// from block.js
-
+//============ blockchain.js ============
 // 回傳一個 8個元素的 array ， 每個元素是位數不定的整數（有看到 9位/10位 ； 正負不一定）
 function sha256(block, chain) {
   // calculate a SHA256 hash of the contents of the block
@@ -82,5 +112,3 @@ function mine(block, chain, isChain) {
     }
   }
 }
-
-console.log(sha256("1", "yesman"));

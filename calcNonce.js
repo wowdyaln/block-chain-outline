@@ -57,9 +57,9 @@ function mine(oldHash) {
   }
 }
 
-let block = fs.readFileSync('./block.txt', 'utf8')
-let nonce = fs.readFileSync('./nonce.txt', 'utf8')
-let data = fs.readFileSync('./data.txt', 'utf8')
+let block = fs.readFileSync('./input/block.txt', 'utf8')
+let nonce = fs.readFileSync('./input/nonce.txt', 'utf8')
+let data = fs.readFileSync('./input/data.txt', 'utf8')
 
 let string = `${block}${nonce}${data}`
 
