@@ -139,8 +139,8 @@ https://anders.com/blockchain/coinbase.html
 
 There are many fields to effect the coming hash. You can get a final string using '**getText(block, user)**' functions with devTools.
 
-> block left to right: 1~5
-  user PeerA to PeerC: 1~3
+> block left to right: 1 - 5
+  user PeerA to PeerC: 1 - 3
 
 
 ```
