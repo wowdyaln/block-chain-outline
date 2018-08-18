@@ -51,7 +51,7 @@ function mine() {
       `)
       // break
     }
-    if( x > 10000000000000 ){
+    if (x > Number.MAX_VALUE - 1 ){
       console.log(`oh my God !! computer can't calculate the nonce... ...`);
     }
   }
