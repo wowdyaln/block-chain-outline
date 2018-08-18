@@ -26,7 +26,7 @@ function hashIt(str) {
 
 
 // * 如果出來的 hash 不符合前導零規定，就 mine
-function mine(oldHash) {
+function mine() {
   let found = false
   let t1 = Date.now()
 
@@ -51,9 +51,9 @@ function mine(oldHash) {
       `)
       // break
     }
-  }
-  if(!found){
-    console.log(`oh my God !! computer can't calculate the nonce... ...`);
+    if( x > 10000000000000 ){
+      console.log(`oh my God !! computer can't calculate the nonce... ...`);
+    }
   }
 }
 
@@ -83,9 +83,17 @@ console.log(`
             `);
 
 //! check hash...
+if (valid) {
+  console.log(`
+  Good !
+  The nonce is valid (leading_zero: '${leading_zero}'): ${nonce}
+  hash : ${hash}
+  `)
+}
+
 if (!valid){ 
   console.log("mining... ");
-  mine(hash)
+  mine()
 
   let log = `
   ============================ 
@@ -109,11 +117,3 @@ if (!valid){
   fs.appendFileSync('./logs/log.txt', log, "utf8")
 
 } 
-
-if (valid) {
-  console.log(`
-  Good !
-  The nonce is valid (leading_zero: '${leading_zero}'): ${nonce}
-  hash : ${hash}
-  `)
-}
